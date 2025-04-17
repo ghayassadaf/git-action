@@ -13,6 +13,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
-    - run: docker build -t hello-cicd:latest .
+    
     - run: echo "${{SECRETS.DOCKER_PASSWORD}}"| docker login --username ${{SECRETS.DOCKER_USER}} --password-stdin
+    - run: docker build -t hello-cicd:latest .
     - run: docker push ghayassadaf/hello-cicd
