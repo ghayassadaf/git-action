@@ -15,5 +15,5 @@ jobs:
     - uses: actions/checkout@v4
     
     - run: echo "${{SECRETS.DOCKER_PASSWORD}}"| docker login --username ${{SECRETS.DOCKER_USER}} --password-stdin
-    - run: docker build -t hello-cicd:latest .
-    - run: docker push ghayassadaf/hello-cicd
+    - run: docker build -t ${{SECRETS.DOCKER_USER}}/hello-cicd:latest .
+    - run: docker push ${{SECRETS.DOCKER_USER}}/hello-cicd:latest
